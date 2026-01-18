@@ -1,4 +1,4 @@
-name: Android CI/CD
+name: Android CI/CD (No Store Submission)
 on:
   push:
     branches:
@@ -24,7 +24,7 @@ jobs:
         run: npm install -g eas-cli
 
       - name: Build Android app
-        run: eas build --profile ${{ github.ref == 'refs/heads/main' && echo 'production' || echo 'development' }} --platform android --non-interactive
+        run: eas build --profile development --platform android --non-interactive
 
       - name: Publish OTA update
-        run: eas update --branch ${{ github.ref == 'refs/heads/main' && echo 'main' || echo 'development' }} --non-interactive
+        run: eas update --branch development --non-interactive
